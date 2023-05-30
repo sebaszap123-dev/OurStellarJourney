@@ -51,13 +51,13 @@ const currentSong = computed(() => {
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="#" class="nav-link px-2 text-white">Our Stellar Love's Melody</a></li>
                     <li>
-                        <a to="/love_way" class="nav-link px-2 link-white">Home</a>
+                        <a :href="route('realhome')" class="nav-link px-2 link-white">Home</a>
                     </li>
                     <li>
-                        <a to="/gallery" class="nav-link px-2 link-white">Gallery</a>
+                        <a :href="route('gallery')" class="nav-link px-2 link-white">Gallery</a>
                     </li>
                     <li>
-                        <a to="/our_diary" class="nav-link px-2 link-white">Diario</a>
+                        <a :href="route('love-diary')" class="nav-link px-2 link-white">Diario</a>
                     </li>
                 </ul>
 

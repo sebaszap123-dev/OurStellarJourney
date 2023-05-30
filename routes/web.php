@@ -25,15 +25,13 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class, 'realhome'])->name('realhome');
+    Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+    Route::get('/love-diary', [HomeController::class, 'LoveDiary'])->name('love-diary');
+});
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
-
-
-Route::get('/home', [HomeController::class, 'realhome'])->name('realhome');
-
-Route::get(
-    '/home',
-    [HomeController::class, 'realhome']
-)->middleware(['auth', 'verified'])->name('realhome');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -15,4 +15,12 @@ class HomeController extends Controller
     {
         return Inertia::render('SPA/StarfieldView');
     }
+    public function gallery(Request $request)
+    {
+        return Inertia::render('SPA/GalleryView');
+    }
+    public function LoveDiary(Request $request)
+    {
+        return Inertia::render('SPA/LoveDiaryView');
+    }
 }
