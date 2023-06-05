@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <AuthenticatedLayout>
     <div class="container">
       <h1>Diario</h1>
     </div>
-  </div>
+  </AuthenticatedLayout>
 </template>
 
-<script setup></script>
+<script setup>
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+</script>
 
 <style lang="css" scoped></style>

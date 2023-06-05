@@ -60,48 +60,31 @@ const currentSong = computed(() => {
                         <a :href="route('love-diary')" class="nav-link px-2 link-white">Diario</a>
                     </li>
                 </ul>
-
-                <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search" />
-        </form> -->
-
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle" />
-                    </a>
-                    <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </header>
-    <main class="">
-        <div class="floating-card">
-            <audio ref="audioPlayer" :src="currentSong.audio" @ended="playNextSong"
-                @loadedmetadata="playCurrentSong"></audio>
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title">{{ currentSong.title }}</h5>
-                    <p class="card-text">{{ currentSong.artist }}</p>
-                    <div class="btn-group d-flex justify-content-md-center" role="group">
-                        <button class="btn btn-primary" @click="togglePlayback">
-                            <span v-if="isPlaying"><i class="bi bi-pause"></i> Pause</span>
-                            <span v-else><i class="bi bi-play"></i> Play</span>
-                        </button>
-                        <button class="btn btn-secondary" @click="playNextSong">
-                            <i class="bi bi-skip-forward"></i> Next
-                        </button>
+                <div class="row text-end">
+                    <div class="col">
+                        <div class="dropdown text-end">
+                            <a href="#" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
+                                    class="rounded-circle" />
+                            </a>
+                            <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <ion-icon size="large" name="calendar-outline"></ion-icon>
                     </div>
                 </div>
             </div>
         </div>
+    </header>
+    <main>
         <slot></slot>
     </main>
     <footer class="footer mt-auto py-3 bg-footer">
@@ -115,6 +98,10 @@ const currentSong = computed(() => {
 </template>
 
 <style scoped>
+ion-icon {
+    color: white;
+}
+
 .bg-kawai {
     background-color: #ef8e73;
 }
@@ -146,19 +133,5 @@ h1 {
 a {
     font-weight: bold;
     font-size: 1.5rem;
-}
-
-.floating-card {
-    position: absolute;
-    /* Opcional: Cambia a 'position: absolute;' si deseas que la tarjeta esté posicionada de forma absoluta */
-    top: 12rem;
-    /* Ajusta la posición vertical de la tarjeta */
-    right: 50px;
-    /* Ajusta el color de fondo de la tarjeta */
-    border-radius: 5px;
-    /* Ajusta el radio de borde de la tarjeta */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Opcional: Agrega una sombra a la tarjeta */
-    width: 20rem;
 }
 </style>

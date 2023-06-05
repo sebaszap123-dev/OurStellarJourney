@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,13 +26,17 @@ use Inertia\Inertia;
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+Route::get('/', [HomeController::class, 'home'])->name('home');
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [HomeController::class, 'realhome'])->name('realhome');
     Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
-    Route::get('/love-diary', [HomeController::class, 'LoveDiary'])->name('love-diary');
+    Route::get('/love-diary', [HomeController::class, 'loveDiary'])->name('love-diary');
+    Route::get('/our-calendar', [HomeController::class, 'calendar'])->name('calendar');
+    Route::get('/home', [HomeController::class, 'realhome'])->name('realhome');
+    Route::post('/upload-image', [MainImageController::class, 'changeImage'])->name('upload.image');
 });
 
-Route::get('/', [HomeController::class, 'home'])->name('home');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

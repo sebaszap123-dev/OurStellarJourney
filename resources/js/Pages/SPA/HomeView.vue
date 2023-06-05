@@ -4,7 +4,7 @@
             <div class="container d-flex align-items-center justify-content-center">
                 <div class="card text-center mb-3">
                     <div class="card-body">
-                        <h1 class="animated-text">Our Stellar Love's Melody</h1>
+                        <h1 class="animated-text">Our Stellar Love's Journey</h1>
                         <div class="d-flex justify-content-center mb-3">
                             <input id="coupleDate" class="form-control text-center" type="date" v-model="myTime" />
                         </div>

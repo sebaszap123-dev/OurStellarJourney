@@ -8,7 +8,7 @@ export function coupleDate(date) {
 }
 
 export const myPlaylist = [
-    { title: 'Another Love', audio: './assets/assets/songs/Another Love.mp3' },
+    { title: 'Another Love', audio: './assets/songs/Another Love.mp3' },
     { title: 'Chasing Cars', audio: './assets/songs/Chasing Cars.mp3' },
     // { title: "cliché", audio: './assets/songs/cliché.mp3' },
     // { title: "Eastside (with Halsey & Khalid)", audio: './assets/songs/Eastside (with Halsey & Khalid).mp3' },

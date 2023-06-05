@@ -2,25 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\MainImage;
+// use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    public function home(Request $request)
+    public function home()
     {
         return Inertia::render('SPA/HomeView');
     }
-    public function realhome(Request $request)
+    public function realhome()
     {
-        return Inertia::render('SPA/StarfieldView');
+        $image = MainImage::all();
+        $imagePaths = $image->pluck('image_path')->toArray();
+        return Inertia::render('SPA/StarfieldView', ['main_image' => $imagePaths]);
     }
-    public function gallery(Request $request)
+    public function gallery()
     {
         return Inertia::render('SPA/GalleryView');
     }
-    public function LoveDiary(Request $request)
+    public function loveDiary()
     {
         return Inertia::render('SPA/LoveDiaryView');
+    }
+    // public function slovify()
+    // {
+    //     return Inertia::render('SPA/SlovifyView');
+    // }
+    public function calendar()
+    {
+        return Inertia::render('SPA/CalendarEvents');
     }
 }
