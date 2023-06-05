@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class OurGalleryController extends Controller
 {
     public function index()
     {
         $galleries = Gallery::all();
-        return response()->json($galleries);
+        $galleriesArray = $galleries->toArray();
+        return Inertia::render('SPA/GalleryView', ['gallery' => $galleriesArray]);
     }
 
     public function store(Request $request)

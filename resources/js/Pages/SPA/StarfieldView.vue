@@ -91,6 +91,10 @@ h1 {
   text-align: justify;
 }
 
+.container {
+  padding-bottom: 0.7rem;
+}
+
 .image-container {
   position: relative;
 }
