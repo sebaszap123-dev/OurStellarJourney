@@ -22,15 +22,15 @@
 import Swal from 'sweetalert2';
 const fireForm = async () => {
     const { value: formData } = await Swal.fire({
-        title: 'Save changes before closing?',
+        title: 'Agrega una fotito más para nuestro recuerdo',
         html: `
         <input type="file" id="swal-input-file" accept="image/*" aria-label="Upload your profile picture" class="form-control">
         <br>
         <input type="text" id="swal-input-description" class="form-control" placeholder="Description">
       `,
         showCancelButton: true,
-        confirmButtonText: 'Save As',
-        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Guardame :3',
+        cancelButtonText: 'Cancelar',
         denyButtonText: 'Close without Saving',
         preConfirm: () => {
             const fileInput = document.getElementById('swal-input-file');

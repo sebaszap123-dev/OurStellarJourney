@@ -1,9 +1,9 @@
 <template>
     <div class="col">
-        <div class="card shadow-sm" @click="showModal = true">
-            <img :src="image" alt="awa" class="card-img-top" />
+        <div class="card shadow-sm">
+            <img :src="image" alt="awa" class="card-img-top" @click="showModal = true" />
             <div class="card-body">
-                <p class="card-text">
+                <p class="card-text" @click="showModal = true">
                     {{ description }}
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -46,11 +46,17 @@ const showModal = ref(false);
 <style scoped>
 .card {
     transition: all 0.3s ease;
-    height: auto;
+    height: 20rem;
 }
 
 .card:hover {
     transform: scale(1.1);
+}
+
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .col {
@@ -80,7 +86,7 @@ const showModal = ref(false);
 .modal-content {
     background-color: #ffedf5;
     padding: 20px;
-    max-width: 35rem;
+    max-width: 30rem;
 }
 
 .close {
