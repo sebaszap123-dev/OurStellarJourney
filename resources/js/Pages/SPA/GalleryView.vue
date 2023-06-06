@@ -3,7 +3,7 @@
     <ImageCarousel></ImageCarousel>
     <Album>
       <GalleryCard v-for="item in $page.props.gallery" :description="item.description" :image="getImageUrl(item.image)"
-        :elapsedTime="Date(item.updated_at)" />
+        :elapsedTime="item.updated_at" />
     </Album>
   </AuthenticatedLayout>
 </template>

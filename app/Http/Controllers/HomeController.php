@@ -10,7 +10,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return Inertia::render('SPA/HomeView');
+        $date = env('OUR_DATE');
+        return Inertia::render('SPA/HomeView', ['date' => $date]);
     }
     public function realhome()
     {

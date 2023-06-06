@@ -1,10 +1,18 @@
 // Importa la librería de manejo de fechas, como moment.js o date-fns
 
 // Función para validar la fecha requerida
-export function coupleDate(date) {
-    const fechaRequerida = Date.parse('2021-04-18') // Establece la fecha requerida
+export function coupleDate(date, our_date) {
+    const fechaRequerida = Date.parse(our_date) // Establece la fecha requerida
     // Validar si la fecha del parámetro "to" es igual o posterior a la fecha requerida
     return date === fechaRequerida
+}
+
+export function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formatter = new Intl.DateTimeFormat('es-ES', options);
+    const formattedDate = formatter.format(date);
+    return formattedDate;
 }
 
 export const myPlaylist = [

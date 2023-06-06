@@ -7,7 +7,7 @@
                     {{ description }}
                 </p>
                 <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-muted">{{ elapsedTime.toString() }}</small>
+                    <small class="text-muted">{{ formatDate(elapsedTime) }}</small>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@ defineProps({
         required: true,
     },
     elapsedTime: {
-        type: Number,
+        type: String,
         required: true,
     },
     image: {
@@ -37,8 +37,9 @@ defineProps({
     }
 })
 
+// Actions
+import { formatDate } from '@/services/couples'
 import { ref } from 'vue';
-
 const showModal = ref(false);
 </script>
 
