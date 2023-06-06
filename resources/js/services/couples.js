@@ -2,9 +2,21 @@
 
 // Función para validar la fecha requerida
 export function coupleDate(date, our_date) {
-    const fechaRequerida = Date.parse(our_date) // Establece la fecha requerida
-    // Validar si la fecha del parámetro "to" es igual o posterior a la fecha requerida
-    return date === fechaRequerida
+    const fechaRequerida = new Date(Date.parse(our_date)); // Establece la fecha requerida
+    const givenDate = new Date(date)
+    const year1 = givenDate.getFullYear();
+    const month1 = givenDate.getMonth();
+    const day1 = givenDate.getDate();
+
+
+    const year2 = fechaRequerida.getFullYear();
+    const month2 = fechaRequerida.getMonth();
+    const day2 = fechaRequerida.getUTCDate();
+    if (year1 === year2 && month1 === month2 && day1 === day2) {
+        return true
+    } else {
+        return false
+    }
 }
 
 export function formatDate(dateString) {

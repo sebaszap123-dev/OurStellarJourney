@@ -5,11 +5,12 @@
                 <div class="card text-center mb-3">
                     <div class="card-body">
                         <h1 class="animated-text">Our Stellar Love's Journey</h1>
+                        <p>Seleccionar nuestra fecha especial</p>
                         <div class="d-flex justify-content-center mb-3">
-                            <input id="coupleDate" class="form-control text-center" type="date" v-model="myTime" />
+                            <VDatePicker v-model="date" mode="date" :select-attribute="selectAttribute" />
                         </div>
                         <div class="d-flex justify-content-center mb-3">
-                            <button class="btn btn-secondary star-button" @click.prevent="join(myTime, $page.props.date)">
+                            <button class="btn btn-secondary star-button" @click.prevent="join($page.props.date)">
                                 Begings the melody
                             </button>
                         </div>
@@ -24,9 +25,13 @@
 import Swal from 'sweetalert2'
 import { coupleDate } from '@/services/couples'
 import { router } from '@inertiajs/vue3';
-let myTime = '2023-05-27' // Define la propiedad fecha con el tipo Date
-const join = (date, our_date) => {
-    if (coupleDate(Date.parse(date), our_date)) {
+import { ref } from 'vue';
+// Date picker
+const date = ref(new Date());
+const selectAttribute = ref({ dot: true });
+
+const join = (our_date) => {
+    if (coupleDate(date.value, our_date)) {
         Swal.fire({
             icon: 'success',
             title: 'Te amodoro :3',
@@ -53,6 +58,10 @@ const join = (date, our_date) => {
 </script>
   
 <style lang="css" scoped>
+p {
+    font-size: large !important;
+}
+
 .background-container {
     background-image: url('@/../../public/assets/img/wallpaper_inicio.jpg');
     /* Ruta relativa a la imagen de fondo */

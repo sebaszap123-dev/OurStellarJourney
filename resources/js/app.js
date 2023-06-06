@@ -1,6 +1,8 @@
 import './bootstrap';
 import '../css/app.css';
+import 'v-calendar/style.css';
 
+import VCalendar from 'v-calendar';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
@@ -20,6 +22,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(createPinia())
+            .use(VCalendar, {})
             .mount(el);
     },
     progress: {

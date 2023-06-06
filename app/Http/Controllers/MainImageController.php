@@ -23,8 +23,22 @@ class MainImageController extends Controller
             // Eliminar el registro existente
             $mainImage->delete();
             $isDeleted = true;
-        }
-        if ($isDeleted) {
+            if ($isDeleted) {
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '_' . $image->getClientOriginalName();
+                    $image->storeAs('public/images', $imageName);
+
+                    // Guardar la ruta de la imagen en la base de datos
+                    $mainImage = new MainImage();
+                    $mainImage->image_path = 'images/' . $imageName;
+                    $mainImage->save();
+
+                    return response()->json(['message' => 'La imagen se ha subido correctamente.'], 200);
+                }
+                return response()->json(['message' => 'Error al subir la imagen.'], 400);
+            }
+        } else {
             if ($request->hasFile('image')) {
                 $image = $request->file('image');
                 $imageName = time() . '_' . $image->getClientOriginalName();
@@ -39,6 +53,5 @@ class MainImageController extends Controller
             }
             return response()->json(['message' => 'Error al subir la imagen.'], 400);
         }
-        return response()->json(['message' => 'Error al eliminar la imagén anterior.'], 404);
     }
 }
