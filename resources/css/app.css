@@ -53,3 +53,7 @@ footer {
     transform: translateY(20px);
     opacity: 0.5;
 }
+
+main {
+    background-color: #ffedf5;
+}

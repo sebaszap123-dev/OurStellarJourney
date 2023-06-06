@@ -1,5 +1,5 @@
 <template>
-    <div class="album bg-light">
+    <div class="album">
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 <slot />
@@ -21,7 +21,7 @@
 <script setup>
 import Swal from 'sweetalert2';
 const fireForm = async () => {
-    const { value: formValues } = await Swal.fire({
+    const { value: formData } = await Swal.fire({
         title: 'Save changes before closing?',
         html: `
         <input type="file" id="swal-input-file" accept="image/*" aria-label="Upload your profile picture" class="form-control">
@@ -36,15 +36,32 @@ const fireForm = async () => {
             const fileInput = document.getElementById('swal-input-file');
             const descriptionInput = document.getElementById('swal-input-description');
             return {
-                file: fileInput.files[0],
+                image: fileInput.files[0],
                 description: descriptionInput.value
             };
         },
     });
-    if (formValues) {
-        // Realizar acciones con los valores del formulario
-        console.log(formValues.file);
-        console.log(formValues.description);
+    if (formData) {
+        try {
+            const response = await axios.post('/store-gallery', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            if (response.status === 200) {
+                Swal.fire('Success', 'Image uploaded successfully!', 'success',).then(() => {
+                    window.location.reload()
+                });
+            } else {
+                Swal.fire('Error', 'Failed to upload image.', 'error');
+            }
+        } catch (error) {
+            const message = error.response.data.message;
+            Swal.fire('Error', message, 'error');
+        }
+        // console.log(formData.file);
+        // console.log(formData.description);
     }
 }
 </script>
