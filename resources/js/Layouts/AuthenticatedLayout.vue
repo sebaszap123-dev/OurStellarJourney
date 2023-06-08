@@ -78,7 +78,9 @@ const currentSong = computed(() => {
                         </div>
                     </div>
                     <div class="col">
-                        <ion-icon size="large" name="calendar-outline"></ion-icon>
+                        <a :href="route('calendar')">
+                            <ion-icon size="large" name="calendar-outline"></ion-icon>
+                        </a>
                     </div>
                 </div>
             </div>

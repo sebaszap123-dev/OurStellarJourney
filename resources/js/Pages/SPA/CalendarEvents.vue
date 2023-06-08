@@ -1,15 +1,21 @@
 <template>
-    <VCalendar :initial-page="{ month: 4, year: 2019 }" :color="selectedColor" :attributes="attrs" />
+    <AuthenticatedLayout>
+        <Album>
+            <CalendarEventComponent></CalendarEventComponent>
+        </Album>
+        <label id="swal-input-file"></label>
+    </AuthenticatedLayout>
 </template>
 <script setup>
-import { ref } from 'vue';
-
-const selectedColor = ref('blue');
-const attrs = ref([
-    {
-        key: 'test',
-        highlight: true,
-        dates: { start: new Date(2019, 3, 15), end: new Date(2019, 3, 19) },
-    }
-]);
+import Album from '@/Components/Album.vue';
+import CalendarEventComponent from '@/Components/CalendarEventComponent.vue';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 </script>
+
+<style>
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+</style>

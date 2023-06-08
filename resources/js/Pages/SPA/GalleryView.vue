@@ -1,7 +1,7 @@
 <template>
   <AuthenticatedLayout>
     <ImageCarousel></ImageCarousel>
-    <Album>
+    <Album :showAddCard="true">
       <GalleryCard v-for="item in $page.props.gallery" :description="item.description" :image="getImageUrl(item.image)"
         :elapsedTime="item.updated_at" />
     </Album>

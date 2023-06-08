@@ -27,12 +27,4 @@ class HomeController extends Controller
     {
         return Inertia::render('SPA/LoveDiaryView');
     }
-    // public function slovify()
-    // {
-    //     return Inertia::render('SPA/SlovifyView');
-    // }
-    public function calendar()
-    {
-        return Inertia::render('SPA/CalendarEvents');
-    }
 }

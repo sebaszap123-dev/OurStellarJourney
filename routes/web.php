@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainImageController;
+use App\Http\Controllers\OurCalendarController;
 use App\Http\Controllers\OurGalleryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -33,16 +34,17 @@ Route::get('/', [HomeController::class, 'home'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('/gallery', [OurGalleryController::class, 'index'])->name('gallery');
     Route::get('/love-diary', [HomeController::class, 'loveDiary'])->name('love-diary');
-    Route::get('/our-calendar', [HomeController::class, 'calendar'])->name('calendar');
+    Route::get('/our-calendar', [OurCalendarController::class, 'index'])->name('calendar');
     Route::get('/home', [HomeController::class, 'realhome'])->name('realhome');
+    Route::get('/create-calendar', [OurCalendarController::class, 'calendarPost'])->name('calendar.create');
 });
-
 
 // Forms
 Route::middleware(['auth'])->group(function () {
     Route::post('/upload-image', [MainImageController::class, 'changeImage'])->name('upload.image');
     Route::post('/store-gallery', [OurGalleryController::class, 'store'])->name('upload.gallery');
 });
+Route::post('/store-calendar', [OurCalendarController::class, 'store'])->name('upload.calendar');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

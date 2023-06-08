@@ -3,12 +3,12 @@
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
                 <slot />
-                <div class="col">
+                <div class="col" v-if="showAddCard">
                     <div class="card shadow-sm" style="width: 15rem; height: 100%;" @click.prevent="fireForm">
                         <div class="card-body text-center">
                             <ion-icon name="add-circle-outline"></ion-icon>
                             <p class="card-text">
-                                Agrega una nueva fotografía :3.
+                                {{ textAddCard }}
                             </p>
                         </div>
                     </div>
@@ -20,6 +20,19 @@
 
 <script setup>
 import Swal from 'sweetalert2';
+
+defineProps({
+    showAddCard: {
+        type: Boolean,
+        required: false,
+        default: false,
+    },
+    textAddCard: {
+        type: String,
+        default: 'Agrega una nueva fotografía :3.'
+    }
+})
+
 const fireForm = async () => {
     const { value: formData } = await Swal.fire({
         title: 'Agrega una fotito más para nuestro recuerdo',
