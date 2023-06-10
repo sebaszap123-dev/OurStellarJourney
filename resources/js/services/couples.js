@@ -1,5 +1,7 @@
 // Importa la librería de manejo de fechas, como moment.js o date-fns
 
+import { ref } from "vue";
+
 // Función para validar la fecha requerida
 export function coupleDate(date, our_date) {
     const fechaRequerida = new Date(Date.parse(our_date)); // Establece la fecha requerida
@@ -18,6 +20,12 @@ export function coupleDate(date, our_date) {
         return false
     }
 }
+
+export function stringToDate(dateString) {
+    const [year, month, day] = dateString.split('-');
+    return new Date(year, month - 1, day);
+}
+
 
 export function formatDate(dateString) {
     const date = new Date(dateString);
@@ -44,3 +52,14 @@ export const myPlaylist = [
     { title: "when the party's over", audio: "./assets/songs/when the party's over.mp3" }
     // Agrega más canciones si es necesario
 ]
+
+export const attributes = (dates, color, description) => ref([
+    {
+        dates: dates, // Every Friday
+        color: color,
+        dot: true,
+        popover: {
+            label: description,
+        },
+    },
+]);

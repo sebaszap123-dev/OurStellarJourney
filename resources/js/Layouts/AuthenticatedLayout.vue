@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { myPlaylist } from '@/services/couples'
+import DropdownLink from '@/Components/DropdownLink.vue';
 
 let currentIndex = ref(Math.floor(Math.random() * myPlaylist.length))
 
@@ -68,12 +69,16 @@ const currentSong = computed(() => {
                                     class="rounded-circle" />
                             </a>
                             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Settings</a></li> -->
+                                <li><a class="dropdown-item" :href="route('profile.edit')">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider" />
                                 </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li>
+                                    <DropdownLink :href="route('logout')" method="post" as="button">
+                                        Log Out
+                                    </DropdownLink>
+                                </li>
                             </ul>
                         </div>
                     </div>

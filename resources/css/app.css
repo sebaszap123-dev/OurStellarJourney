@@ -30,6 +30,10 @@
     font-weight: 500;
 }
 
+h1 {
+    font-family: 'Delius';
+}
+
 main,
 header,
 footer {

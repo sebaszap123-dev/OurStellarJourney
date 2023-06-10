@@ -1,7 +1,10 @@
 <template>
     <AuthenticatedLayout>
-        <Album>
-            <CalendarEventComponent></CalendarEventComponent>
+        <div class="d-flex justify-center pt-5">
+            <h1>Nuestro calendario</h1>
+        </div>
+        <Album class="pt-5">
+            <CalendarEventComponent :events="$page.props.calendar"></CalendarEventComponent>
         </Album>
         <label id="swal-input-file"></label>
     </AuthenticatedLayout>
